@@ -1,6 +1,5 @@
 
 function love.load()
-
     love.graphics.setDefaultFilter("nearest")
 
     cursor = love.graphics.newImage("assets/gfx/cursor.png")
@@ -22,8 +21,7 @@ function love.load()
         hRes = 0,
         vRes = 0,
         cursor_size = 1,
-        current_font = fonts.Gohu11
-
+        current_font = fonts.Gohu11,
     }
 
 end
@@ -83,7 +81,6 @@ function love.draw()
         player.x, 
         player.y, 
         player.size)
-
     
     love.graphics.print(
         "Screen Resolution: " .. properties.hRes .. "x" .. properties.vRes,
@@ -91,21 +88,27 @@ function love.draw()
         10, 
         10)
 
+    love.graphics.print("Player X: " .. math.floor(player.x) .. " Y: " .. math.floor(player.y),
+        properties.current_font,
+        10,
+        30)
+
     love.graphics.print(
         "Cursor size: " .. properties.cursor_size,
         properties.current_font, 
         10, 
-        30)
-
-    love.graphics.print("X: " .. math.floor(player.x) .. " Y: " .. math.floor(player.y),
-        properties.current_font,
-        10,
         50)
+
+    love.graphics.print(
+        "FPS: " .. tostring(love.timer.getFPS()),
+        properties.current_font, 
+        10, 
+        70)
 
     -- cursor (keep at bottom)
     love.graphics.draw(cursor, 
-        love.mouse.getX() - cursor:getWidth() / 2, 
-        love.mouse.getY() - cursor:getHeight() / 2,
+        (love.mouse.getX() + 16) - cursor:getWidth() / 2, 
+        (love.mouse.getY() + 16) - cursor:getHeight() / 2,
         0,
         properties.cursor_size, properties.cursor_size)
 
