@@ -27,14 +27,11 @@ function love.keypressed(key, scancode, isrepeat)
 
 end
 
-
 function love.update(dt) 
 
 	player_movement(dt)
 
 end
-
-
 
 function love.draw() 
 	love.graphics.draw(assets.background,
