@@ -3,6 +3,7 @@ require "src/assets"
 
 function love.load()
 	anim8 = require("lib/anim8")
+	sti = require("lib/sti")
 	
 	love.graphics.setDefaultFilter("nearest", "nearest")
 
