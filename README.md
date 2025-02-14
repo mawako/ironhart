@@ -2,7 +2,7 @@
  A game written in LOVE2D
 
  ```
- ironhart
+ironhart
 ├── assets
 │   ├── fonts
 │   │   ├── alagard.ttf
@@ -19,5 +19,9 @@
 ├── main.lua
 ├── README.md
 └── src
+    ├── assets.lua
+    └── player.lua
+
+8 directories, 11 files
 
  ```
