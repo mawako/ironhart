@@ -11,6 +11,8 @@ function love.load()
 	player = {}
 	player.x = 300
 	player.y = 400
+	player.scaleX = 3
+	player.scaleY = 3
 	player.speed = 200
 	player.sprite = assets.player
 	player.spritesheet = assets.spritesheet
@@ -20,13 +22,26 @@ function love.load()
 	player.animations.idle = anim8.newAnimation(player.grid("1-4", 1), 0.2)
 	player.animations.up = anim8.newAnimation(player.grid("1-8", 3), 0.2)
 	player.animations.down = anim8.newAnimation(player.grid("1-8", 5), 0.2)
-	player.animations.left = anim8.newAnimation(player.grid("1-8", 4), 0.2)
-	player.animations.right = anim8.newAnimation(player.grid("1-8", 2), 0.2)
+	player.animations.left_right = anim8.newAnimation(player.grid("1-8", 2), 0.2)
 
 	player.anim = player.animations.idle
 
 end
 
+function love.keypressed(key, scancode, isrepeat)
+   if key == "escape" then
+      	love.event.quit()
+   end
+
+   if key == "a" or key == "left" then 
+   		player.scaleX = -3
+   end
+
+   if key == "d" or key == "right" then 
+   		player.scaleX = 3
+   end
+
+end
 
 
 function love.update(dt) 
@@ -45,11 +60,12 @@ function love.update(dt)
 
 	if love.keyboard.isDown("left", "a") then 
 		player.x = player.x - (player.speed * dt)
-		player.anim = player.animations.left
+		player.anim = player.animations.left_right
 	end
+	
 	if love.keyboard.isDown("right", "d") then 
 		player.x = player.x + (player.speed * dt)
-		player.anim = player.animations.right
+		player.anim = player.animations.left_right
 	end
 
 
@@ -71,5 +87,7 @@ function love.draw()
 		player.x,
 		player.y,
 		nil,
-		3,3)
+		player.scaleX,
+		player.scaleY,
+		16, 16)
 end
