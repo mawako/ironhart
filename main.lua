@@ -7,6 +7,7 @@ function love.load()
 
 	assets = {}
 	assets.player = love.graphics.newImage("assets/gfx/player.png")
+	assets.background = love.graphics.newImage("assets/gfx/background.png")
 
 	player = {}
 	player.x = 300
@@ -34,6 +35,12 @@ function love.update(dt)
 end
 
 function love.draw() 
+	love.graphics.draw(assets.background,
+		0,
+		0,
+		0,
+		2,2)
+
 	love.graphics.draw(player.sprite, 
 		player.x, 
 		player.y, 
