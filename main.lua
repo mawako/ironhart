@@ -2,14 +2,14 @@ require "src/player"
 require "src/assets"
 
 function love.load()
-	camera = require("lib/camera")
-	anim8 = require("lib/anim8")
-	sti = require("lib/sti")
-
-	cam = camera
-	
 	love.graphics.setDefaultFilter("nearest", "nearest")
 
+	camera = require("lib/camera")
+	cam = camera()
+
+	anim8 = require("lib/anim8")
+	
+	sti = require("lib/sti")
 	gameMap = sti("maps/map1.lua")
 
 	load_assets()
@@ -37,10 +37,12 @@ function love.update(dt)
 
 	player_movement(dt)
 
+	cam:lookAt(player.x, player.y)
+
 end
 
 function love.draw()
-	
+	cam:attach()
 		love.graphics.draw(assets.background,
 			0, -- x position
 			0, -- y position
@@ -48,6 +50,7 @@ function love.draw()
 			2,2) -- scaling factor (original image scale times by number given) (x, y)
 
 		gameMap:drawLayer(gameMap.layers["Ground"])
+		gameMap:drawLayer(gameMap.layers["Objects"])
 		gameMap:drawLayer(gameMap.layers["Wall"])
 
 		player.anim:draw(player.spritesheet,
@@ -57,5 +60,5 @@ function love.draw()
 			player.scaleX,
 			player.scaleY,
 			16, 16)
-
+	cam:detach()
 end
