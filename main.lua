@@ -4,13 +4,16 @@ require "src/assets"
 function love.load()
 	love.graphics.setDefaultFilter("nearest", "nearest")
 
-	camera = require("lib/camera")
-	cam = camera()
+	windfield = require("lib/windfield")
+	world = windfield.newWorld(0, 0)
 
+	camera = require("lib/camera")
 	anim8 = require("lib/anim8")
-	
 	sti = require("lib/sti")
+
 	gameMap = sti("maps/map1.lua")
+
+	cam = camera(100, 100, 4, 0)
 
 	load_assets()
 
@@ -24,11 +27,11 @@ function love.keypressed(key, scancode, isrepeat)
    end
 
    if key == "a" or key == "left" then 
-   		player.scaleX = -4
+   		player.scaleX = -1
    end
 
    if key == "d" or key == "right" then 
-   		player.scaleX = 4
+   		player.scaleX = 1
    end
 
 end
@@ -43,11 +46,13 @@ end
 
 function love.draw()
 	cam:attach()
-		love.graphics.draw(assets.background,
-			0, -- x position
-			0, -- y position
+		love.graphics.draw(assets.gfx.background,
+			player.x, -- x position
+			player.y, -- y position
 			nil, -- angle, in radians
-			2,2) -- scaling factor (original image scale times by number given) (x, y)
+			0.5,0.5, -- scaling factor (original image scale times by number given) (x, y)
+			assets.gfx.background:getWidth()/2, -- 
+			assets.gfx.background:getHeight()/2) 
 
 		gameMap:drawLayer(gameMap.layers["Ground"])
 		gameMap:drawLayer(gameMap.layers["Objects"])
@@ -61,4 +66,8 @@ function love.draw()
 			player.scaleY,
 			16, 16)
 	cam:detach()
+
+	love.graphics.print("X: " .. math.floor(player.x) .. " Y: " .. math.floor(player.y),
+			assets.font.iosevka,
+			10,10)
 end
