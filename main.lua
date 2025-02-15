@@ -40,7 +40,7 @@ function love.update(dt)
 end
 
 function love.draw()
-	cam:attach()
+	
 		love.graphics.draw(assets.background,
 			0, -- x position
 			0, -- y position
@@ -57,5 +57,5 @@ function love.draw()
 			player.scaleX,
 			player.scaleY,
 			16, 16)
-	cam:detach()
+
 end
