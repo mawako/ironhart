@@ -1,16 +1,17 @@
 require("lib/gooi")
 
 function ui_load()
-    btn = gooi.newButton({
+    exit = gooi.newButton({
         text = "Exit",
         x = 20,
-        y = 720,
+        y = 710,
         w = 150,
         h = 35,
     }):onRelease(function()
         gooi.confirm({
             text = "Are you sure?",
             ok = function()
+                print("User pressed exit button")
                 love.event.quit()
             end
         })
