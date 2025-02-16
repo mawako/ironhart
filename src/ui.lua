@@ -3,8 +3,8 @@ require("lib/gooi")
 function ui_load()
     btn = gooi.newButton({
         text = "Exit",
-        x = 100,
-        y = 100,
+        x = 20,
+        y = 720,
         w = 150,
         h = 35,
     }):onRelease(function()
