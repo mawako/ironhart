@@ -47,6 +47,12 @@ function player_movement(dt)
 		player.anim = player.animations.left_right
 	end
 
+	if love.keyboard.isDown("lshift") then 
+		player.speed = 15000
+	else 
+		player.speed = 10000
+	end
+
 	player.collider:setLinearVelocity(velocity_x, velocity_y)
 
 	player.anim:update(dt)

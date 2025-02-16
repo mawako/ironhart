@@ -1,7 +1,8 @@
-require "src/player"
-require "src/assets"
+require("src/player")
+require("src/assets")
 
 function love.load()
+
 	love.graphics.setDefaultFilter("nearest", "nearest")
 
 	windfield = require("lib/windfield")
@@ -32,6 +33,7 @@ function love.load()
 end
 
 function love.keypressed(key, scancode, isrepeat)
+
    if key == "escape" then
       	love.event.quit()
    end
@@ -59,6 +61,7 @@ function love.update(dt)
 end
 
 function love.draw()
+
 	cam:attach()
 		love.graphics.draw(assets.gfx.background,
 			player.x, -- x position
@@ -82,13 +85,10 @@ function love.draw()
 
 		gameMap:drawLayer(gameMap.layers["bottom_wall"])
 
-	
 	cam:detach()
 
 	love.graphics.print("X: " .. math.floor(player.x) .. " Y: " .. math.floor(player.y),
 			assets.font.iosevka,
 			10,10)
-
-
 
 end
