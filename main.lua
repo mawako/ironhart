@@ -1,5 +1,6 @@
 require("src/player")
 require("src/assets")
+require("src/ui")
 
 function love.load()
 
@@ -30,6 +31,8 @@ function love.load()
 		end
 	end
 
+	ui_load()
+
 end
 
 function love.keypressed(key, scancode, isrepeat)
@@ -57,6 +60,8 @@ function love.update(dt)
 	player.y = player.collider:getY()
 
 	cam:lookAt(player.x, player.y)
+
+	ui_update(dt)
 
 end
 
@@ -91,4 +96,5 @@ function love.draw()
 			assets.font.iosevka,
 			10,10)
 
+	ui_draw()
 end
