@@ -27,22 +27,22 @@ function player_movement(dt)
 
 	player.anim = player.animations.idle
 
-	if love.keyboard.isDown("up", "w") then 
+	if love.keyboard.isDown("w") then 
 		velocity_y = (player.speed * dt) * -1
 		player.anim = player.animations.up
 	end
 
-	if love.keyboard.isDown("down", "s") then 
+	if love.keyboard.isDown("s") then 
 		velocity_y = (player.speed * dt)
 		player.anim = player.animations.down
 	end
 
-	if love.keyboard.isDown("left", "a") then 
+	if love.keyboard.isDown("a") then 
 		velocity_x = (player.speed * dt) * -1
 		player.anim = player.animations.left_right
 	end
 	
-	if love.keyboard.isDown("right", "d") then 
+	if love.keyboard.isDown("d") then 
 		velocity_x = (player.speed * dt)
 		player.anim = player.animations.left_right
 	end

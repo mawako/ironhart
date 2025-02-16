@@ -6,6 +6,7 @@ function love.load()
 
 	windfield = require("lib/windfield")
 	hump_camera = require("lib/hump/camera")
+	hump_gamestate = require("lib/hump/gamestate")
 	anim8 = require("lib/anim8")
 	sti = require("lib/sti")
 
