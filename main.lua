@@ -5,8 +5,6 @@ function love.load()
 	love.graphics.setDefaultFilter("nearest", "nearest")
 
 	windfield = require("lib/windfield")
-	world = windfield.newWorld(0, 0)
-
 	camera = require("lib/camera")
 	anim8 = require("lib/anim8")
 	sti = require("lib/sti")
@@ -15,9 +13,20 @@ function love.load()
 
 	cam = camera(100, 100, 4, 0)
 
+	world = windfield.newWorld(0, 0)
+
 	load_assets()
 
 	player_settings()
+
+	walls = {}
+	if gameMap.layers["Colliders"] then 
+		for i, obj in ipairs(gameMap.layers["Colliders"].objects) do 
+			local wall = world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
+			wall:setType("static")
+			table.insert(walls, wall)
+		end
+	end
 
 end
 
@@ -39,6 +48,10 @@ end
 function love.update(dt) 
 
 	player_movement(dt)
+
+	world:update(dt)
+	player.x = player.collider:getX()
+	player.y = player.collider:getY()
 
 	cam:lookAt(player.x, player.y)
 
@@ -65,9 +78,14 @@ function love.draw()
 			player.scaleX,
 			player.scaleY,
 			16, 16)
+
+	
 	cam:detach()
 
 	love.graphics.print("X: " .. math.floor(player.x) .. " Y: " .. math.floor(player.y),
 			assets.font.iosevka,
 			10,10)
+
+
+
 end

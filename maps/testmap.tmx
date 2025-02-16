@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="26">
+ <editorsettings>
+  <export target="map1.lua" format="lua"/>
+ </editorsettings>
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="512" columns="32">
   <image source="tileset.png" width="512" height="256"/>
  </tileset>
@@ -159,4 +162,24 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="4" name="Colliders">
+  <object id="4" x="256" y="399" width="4" height="193"/>
+  <object id="6" x="256" y="589" width="405" height="3"/>
+  <object id="7" x="316" y="508" width="280" height="4"/>
+  <object id="9" x="139" y="124" width="282" height="4"/>
+  <object id="10" x="139" y="399" width="121" height="4"/>
+  <object id="11" x="139" y="124" width="5" height="279"/>
+  <object id="12" x="592" y="140" width="4" height="372"/>
+  <object id="13" x="656" y="332" width="5" height="260"/>
+  <object id="14" x="656" y="332" width="37" height="4"/>
+  <object id="16" x="688" y="332" width="5" height="164"/>
+  <object id="17" x="688" y="493" width="208" height="3"/>
+  <object id="18" x="892" y="140" width="4" height="356"/>
+  <object id="19" x="592" y="140" width="304" height="4"/>
+  <object id="20" x="316" y="396" width="105" height="4"/>
+  <object id="22" x="316" y="396" width="4" height="116"/>
+  <object id="23" x="304" y="283" width="16" height="5"/>
+  <object id="24" x="192" y="208" width="16" height="16"/>
+  <object id="25" x="416" y="124" width="5" height="276"/>
+ </objectgroup>
 </map>
