@@ -1,3 +1,4 @@
+
 function player_settings() 
 	player = {}
 	player.collider = world:newBSGRectangleCollider(200, 270, 12, 16, 10)
@@ -12,7 +13,7 @@ function player_settings()
 	player.grid = anim8.newGrid(32, 32, player.spritesheet:getWidth(), player.spritesheet:getHeight())
 
 	player.animations = {}
-	player.animations.idle = anim8.newAnimation(player.grid("1-4", 1), 0.2)
+	player.animations.idle = anim8.newAnimation(player.grid("1-4", 1), 0.3)
 	player.animations.up = anim8.newAnimation(player.grid("1-8", 3), 0.1)
 	player.animations.down = anim8.newAnimation(player.grid("1-8", 5), 0.1)
 	player.animations.left_right = anim8.newAnimation(player.grid("1-8", 2), 0.1)

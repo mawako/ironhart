@@ -5,13 +5,13 @@ function love.load()
 	love.graphics.setDefaultFilter("nearest", "nearest")
 
 	windfield = require("lib/windfield")
-	camera = require("lib/camera")
+	hump_camera = require("lib/hump/camera")
 	anim8 = require("lib/anim8")
 	sti = require("lib/sti")
 
 	gameMap = sti("maps/map1.lua")
 
-	cam = camera(100, 100, 4, 0)
+	cam = hump_camera(100, 100, 4, 0)
 
 	world = windfield.newWorld(0, 0)
 
@@ -20,8 +20,8 @@ function love.load()
 	player_settings()
 
 	walls = {}
-	if gameMap.layers["Colliders"] then 
-		for i, obj in ipairs(gameMap.layers["Colliders"].objects) do 
+	if gameMap.layers["colliders"] then 
+		for i, obj in ipairs(gameMap.layers["colliders"].objects) do 
 			local wall = world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
 			wall:setType("static")
 			table.insert(walls, wall)
@@ -67,9 +67,9 @@ function love.draw()
 			assets.gfx.background:getWidth()/2, -- 
 			assets.gfx.background:getHeight()/2) 
 
-		gameMap:drawLayer(gameMap.layers["Ground"])
-		gameMap:drawLayer(gameMap.layers["Objects"])
-		gameMap:drawLayer(gameMap.layers["Wall"])
+		gameMap:drawLayer(gameMap.layers["ground"])
+		gameMap:drawLayer(gameMap.layers["objects"])
+		gameMap:drawLayer(gameMap.layers["wall"])
 
 		player.anim:draw(player.spritesheet,
 			player.x,
@@ -78,6 +78,8 @@ function love.draw()
 			player.scaleX,
 			player.scaleY,
 			16, 16)
+
+		gameMap:drawLayer(gameMap.layers["bottom_wall"])
 
 	
 	cam:detach()
