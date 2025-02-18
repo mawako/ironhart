@@ -49,6 +49,10 @@ function love.keypressed(key, scancode, isrepeat)
    		player.scaleX = 1
    end
 
+   if key == "rctrl" then 
+		player.anim = player.animations.attack
+	end
+
 end
 
 function love.update(dt) 

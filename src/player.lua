@@ -17,6 +17,7 @@ function player_settings()
 	player.animations.up = anim8.newAnimation(player.grid("1-8", 3), 0.1)
 	player.animations.down = anim8.newAnimation(player.grid("1-8", 5), 0.1)
 	player.animations.left_right = anim8.newAnimation(player.grid("1-8", 2), 0.1)
+	player.animations.attack = anim8.newAnimation(player.grid("1-6", 17), 0.1)
 
 	player.anim = player.animations.idle
 end
@@ -55,3 +56,4 @@ function player_movement(dt)
 
 	player.anim:update(dt)
 end
+
