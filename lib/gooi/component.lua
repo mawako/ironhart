@@ -3,28 +3,29 @@
 component = {}
 component.__index = component
 component.colors = {
-  blue = {0.01, 0.46, 0.85, 1.0},
-  green = {0.36, 0.72, 0.36, 1.0},
-  cyan = {0.36, 0.75, 0.87, 1.0},
+  -- red, green, blue, alpha
+  blue = {0, 105/255, 170/255, 1.0},
+  green = {90/255, 197/255, 79/255, 1.0},
+  cyan = {0, 203/255, 249/255, 1.0},
   orange = {0.94, 0.68, 0.31, 1.0},
-  red = {0.85, 0.33, 0.31, 1.0},
-  black = {0.0, 0.0, 0.0, 1.0},
+  red = {255/255, 0, 64/255, 1.0},
+  black = {19/255, 19/255, 19/255, 1.0},
   white = {1.0, 1.0, 1.0, 1.0},
-  clearGray = {0.97, 0.97, 0.97, 1.0},
-  darkGray = {0.16, 0.17, 0.17, 1.0},
-  darkGrayAlpha = {0.16, 0.17, 0.17, 0.59},
+  clearGray = {180/255, 180/255, 180/255, 1.0},
+  darkGray = {39/255, 39/255, 39/255, 1.0},
+  darkGrayAlpha = {39/255, 39/255, 39/255, 0.59},
 }
 component.style = {
-  bgColor = component.colors.blue,
+  bgColor = component.colors.darkGray,
   fgColor = component.colors.white, -- Foreground color
-  tooltipFont = love.graphics.newFont(love.window.toPixels(11)), -- tooltips are smaller than the main font
+  tooltipFont = love.graphics.newFont("assets/fonts/alagard.ttf", 11), -- tooltips are smaller than the main font
   radius = 2, -- raw pixels
   innerRadius = 2, -- raw pixels
   showBorder = true, -- border for components
   borderColor = component.colors.blue,
   borderWidth = love.window.toPixels(2), -- in pixels
   borderStyle = "smooth", -- or "smooth"
-  font = love.graphics.newFont(love.window.toPixels(13)),
+  font = love.graphics.newFont("assets/fonts/alagard.ttf", 16),
 }
 
 local currId = -1
