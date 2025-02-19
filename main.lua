@@ -41,15 +41,6 @@ function love.keypressed(key, scancode, isrepeat)
       	love.event.quit()
    end
 
-   if key == "a" or key == "left" then 
-   		player.scaleX = -1
-   end
-
-   if key == "d" or key == "right" then 
-   		player.scaleX = 1
-   end
-
-
 end
 
 function love.update(dt) 
