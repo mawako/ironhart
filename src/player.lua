@@ -1,16 +1,17 @@
 
 function player_settings() 
 	player = {}
-	player.collider = world:newBSGRectangleCollider(200, 270, 12, 16, 10)
-	player.collider:setFixedRotation(true)
-	player.x = 200
-	player.y = 260
+	player.x = 100
+	player.y = 150
 	player.scaleX = 1
 	player.scaleY = 1
-	player.speed = 10000
+	player.speed = 75
+	player.speed_modfier = 1
 	player.sprite = assets.gfx.player
 	player.spritesheet = assets.gfx.spritesheet
 	player.grid = anim8.newGrid(32, 32, player.spritesheet:getWidth(), player.spritesheet:getHeight())
+	player.collider = world:newBSGRectangleCollider(player.x, player.y, 12, 16, 10)
+	player.collider:setFixedRotation(true)
 
 	player.animations = {}
 	player.animations["idle"] = anim8.newAnimation(player.grid("1-4", 1), 0.3)
@@ -29,27 +30,27 @@ function player_movement(dt)
 	player.anim = player.animations["idle"]
 
 	if love.keyboard.isDown("w") then 
-		velocity_y = (player.speed * dt) * -1
+		velocity_y = (player.speed * player.speed_modfier) * -1
 		player.anim = player.animations["up"]
 	elseif love.keyboard.isDown("s") then 
-		velocity_y = (player.speed * dt)
+		velocity_y = player.speed * player.speed_modfier
 		player.anim = player.animations["down"]
 	end
 
 	if love.keyboard.isDown("a") then 
-		velocity_x = (player.speed * dt) * -1
+		velocity_x = (player.speed * player.speed_modfier) * -1
 		player.anim = player.animations["left_right"]
 		player.scaleX = -1
 	elseif love.keyboard.isDown("d") then 
-		velocity_x = (player.speed * dt)
+		velocity_x = player.speed * player.speed_modfier
 		player.anim = player.animations["left_right"]
 		player.scaleX = 1
 	end
 
 	if love.keyboard.isDown("lshift") then 
-		player.speed = 15000
+		player.speed_modfier = 2
 	else 
-		player.speed = 10000
+		player.speed_modfier = 1
 	end
 
 	player.collider:setLinearVelocity(velocity_x, velocity_y)
