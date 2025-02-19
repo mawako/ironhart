@@ -7,8 +7,8 @@ function player_settings()
 	player.scaleY = 1
 	player.speed = 75
 	player.speed_modfier = 1
-	player.sprite = assets.gfx.player
-	player.spritesheet = assets.gfx.spritesheet
+	player.sprite = assets.gfx["player"]
+	player.spritesheet = assets.gfx["spritesheet"]
 	player.grid = anim8.newGrid(32, 32, player.spritesheet:getWidth(), player.spritesheet:getHeight())
 	player.collider = world:newBSGRectangleCollider(player.x, player.y, 12, 16, 10)
 	player.collider:setFixedRotation(true)
