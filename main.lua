@@ -49,9 +49,6 @@ function love.keypressed(key, scancode, isrepeat)
    		player.scaleX = 1
    end
 
-   if key == "rctrl" then 
-		player.anim = player.animations.attack
-	end
 
 end
 
@@ -67,6 +64,7 @@ function love.update(dt)
 
 	ui_update(dt)
 
+
 end
 
 function love.draw()
@@ -81,7 +79,6 @@ function love.draw()
 			assets.gfx.background:getHeight()/2) 
 
 		gameMap:drawLayer(gameMap.layers["ground"])
-		gameMap:drawLayer(gameMap.layers["objects"])
 		gameMap:drawLayer(gameMap.layers["wall"])
 
 		player.anim:draw(player.spritesheet,
