@@ -38,7 +38,13 @@ end
 function love.keypressed(key, scancode, isrepeat)
 
    if key == "escape" then
-      	love.event.quit()
+      	gooi.confirm({
+            text = "Are you sure?",
+            ok = function()
+                print("User pressed exit button")
+                love.event.quit()
+            end
+        	})
    end
 
 end
@@ -61,7 +67,7 @@ end
 function love.draw()
 
 	cam:attach()
-		love.graphics.draw(assets.gfx.background,
+		love.graphics.draw(assets.gfx["background"],
 			player.x, -- x position
 			player.y, -- y position
 			nil, -- angle, in radians
