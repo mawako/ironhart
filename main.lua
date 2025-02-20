@@ -67,6 +67,7 @@ end
 function love.draw()
 
 	cam:attach()
+
 		love.graphics.draw(assets.gfx["background"],
 			player.x, -- x position
 			player.y, -- y position
@@ -90,9 +91,6 @@ function love.draw()
 
 	cam:detach()
 
-	love.graphics.print("X: " .. math.floor(player.x) .. " Y: " .. math.floor(player.y),
-			assets.font.iosevka,
-			10,10)
-
 	ui_draw()
+
 end

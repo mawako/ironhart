@@ -7,6 +7,7 @@ function player_settings()
 	player.scaleY = 1
 	player.speed = 75
 	player.speed_modfier = 1
+	player.stamina = 1
 	player.sprite = assets.gfx["player"]
 	player.spritesheet = assets.gfx["spritesheet"]
 	player.grid = anim8.newGrid(32, 32, player.spritesheet:getWidth(), player.spritesheet:getHeight())
@@ -48,8 +49,17 @@ function player_movement(dt)
 	end
 
 	if love.keyboard.isDown("lshift") then 
-		player.speed_modfier = 2
+		player.speed_modfier = 1.75
+		player.stamina = player.stamina - 0.001
 	else 
+		player.speed_modfier = 1
+		player.stamina = player.stamina + 0.001
+	end
+
+	if player.stamina > 1 then 
+		player.stamina = 1
+	elseif player.stamina < 0 then
+		player.stamina = 0
 		player.speed_modfier = 1
 	end
 

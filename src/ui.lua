@@ -1,10 +1,10 @@
 require("lib/gooi")
 
 function ui_load()
-    exit = gooi.newButton({
+    help = gooi.newButton({
         text = "Help",
         x = 20,
-        y = 710,
+        y = 20,
         w = 150,
         h = 35,
     }):onRelease(function()
@@ -13,10 +13,23 @@ function ui_load()
         })
     end)
     :warning()
+
+    stamina_bar = gooi.newBar({
+        value = player.stamina,
+        x = 0,
+        y = 758,
+        w = 1280,
+        h = 10,
+    })
+
+
 end
 
 function ui_update(dt)
+    
     gooi.update(dt)
+    stamina_bar.value = player.stamina 
+
 end
 
 function ui_draw()
