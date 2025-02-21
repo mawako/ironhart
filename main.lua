@@ -1,11 +1,66 @@
 require("src/player")
-require("src/assets")
-require("src/menu")
 require("src/game")
+require("lib/gooi")
+require("src/ui_menu")
+
+menu = {}
+
+function menu:enter() 
+	menu_ui_load()
+end
+
+function menu:update(dt) 
+	menu_ui_update(dt)
+end
+
+function menu:keypressed(key)
+
+   if key == "escape" then
+      	gooi.confirm({
+            text = "Exit game?",
+            ok = function()
+                print("User pressed exit button")
+                love.event.quit()
+            end
+        	})
+   end
+
+end
+
+function menu:draw()
+	love.graphics.draw(assets.gfx["background"],
+		0, -- x position
+		0, -- y position
+		nil, -- angle, in radians
+		2,2) -- scaling factor (original image scale times by number given) (x, y) 
+
+	love.graphics.draw(assets.gfx["logo"],
+		330, -- x position
+		384, -- y position
+		nil, -- angle, in radians
+		1,1, -- scaling factor (original image scale times by number given) (x, y)
+		assets.gfx["background"]:getWidth()/2,
+		assets.gfx["background"]:getHeight()/2)
+	
+
+	menu_ui_draw()
+end
+
 
 function love.load()
-
+	
 	love.graphics.setDefaultFilter("nearest", "nearest")
+
+	assets = {}
+	assets.font = {}
+	assets.gfx = {}
+
+	assets.gfx["background"] = love.graphics.newImage("assets/gfx/background.png")
+	assets.gfx["spritesheet"] = love.graphics.newImage("assets/gfx/spritesheet.png")
+	assets.gfx["logo"] = love.graphics.newImage("assets/gfx/logo.png")
+
+	assets.font["iosevka"] = love.graphics.newFont("assets/fonts/iosevka.ttf", 20)
+	assets.font["alagard"] = love.graphics.newFont("assets/fonts/alagard.ttf", 20)
 
 	windfield = require("lib/windfield")
 	hump_camera = require("lib/hump/camera")
@@ -14,12 +69,13 @@ function love.load()
 	sti = require("lib/sti")
 
 	hump_gamestate.registerEvents()
-	hump_gamestate.switch(game)
+	hump_gamestate.switch(menu)
+	
 
 end
 
 function love.update(dt) 
-	
+
 end
 
 function love.draw()
