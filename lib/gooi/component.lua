@@ -25,7 +25,7 @@ component.style = {
   borderColor = component.colors.blue,
   borderWidth = love.window.toPixels(2), -- in pixels
   borderStyle = "smooth", -- or "smooth"
-  font = love.graphics.newFont("assets/fonts/alagard.ttf", 16),
+  font = love.graphics.newFont("assets/fonts/alagard.ttf", 20),
 }
 
 local currId = -1
