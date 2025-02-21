@@ -2,19 +2,6 @@ require("lib/gooi")
 
 function game_ui_load()
     
-    help = gooi.newButton({
-        text = "Help",
-        x = 20,
-        y = 20,
-        w = 150,
-        h = 35,
-    }):onRelease(function()
-        gooi.alert({
-            text = "WASD to Move, " .. 
-            "LShift to Sprint"
-        })
-    end)
-
     stamina_bar = gooi.newBar({
         value = player.stamina,
         x = 0,
