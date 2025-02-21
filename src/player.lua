@@ -48,10 +48,13 @@ function player_movement(dt)
 		player.scaleX = 1
 	end
 
-	if love.keyboard.isDown("lshift") then 
+	if love.keyboard.isDown("lshift") and velocity_x ~= 0 then 
 		player.speed_modfier = 1.75
 		player.stamina = player.stamina - 0.001
-	else 
+	elseif love.keyboard.isDown("lshift") and velocity_y ~= 0 then
+    player.speed_modfier = 1.75
+		player.stamina = player.stamina - 0.001
+  else 
 		player.speed_modfier = 1
 		player.stamina = player.stamina + 0.001
 	end
