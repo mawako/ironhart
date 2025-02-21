@@ -1,6 +1,7 @@
 require("src/player")
 require("src/assets")
-require("src/ui")
+require("src/menu")
+require("src/game")
 
 function love.load()
 
@@ -12,85 +13,15 @@ function love.load()
 	anim8 = require("lib/anim8")
 	sti = require("lib/sti")
 
-	gameMap = sti("maps/map1.lua")
-
-	cam = hump_camera(100, 100, 4, 0)
-
-	world = windfield.newWorld(0, 0)
-
-	load_assets()
-
-	player_settings()
-
-	walls = {}
-	if gameMap.layers["colliders"] then 
-		for i, obj in ipairs(gameMap.layers["colliders"].objects) do 
-			local wall = world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
-			wall:setType("static")
-			table.insert(walls, wall)
-		end
-	end
-
-	ui_load()
-
-end
-
-function love.keypressed(key, scancode, isrepeat)
-
-   if key == "escape" then
-      	gooi.confirm({
-            text = "Are you sure?",
-            ok = function()
-                print("User pressed exit button")
-                love.event.quit()
-            end
-        	})
-   end
+	hump_gamestate.registerEvents()
+	hump_gamestate.switch(game)
 
 end
 
 function love.update(dt) 
-
-	player_movement(dt)
-
-	world:update(dt)
-	player.x = player.collider:getX()
-	player.y = player.collider:getY()
-
-	cam:lookAt(player.x, player.y)
-
-	ui_update(dt)
-
-
+	
 end
 
 function love.draw()
-
-	cam:attach()
-
-		love.graphics.draw(assets.gfx["background"],
-			player.x, -- x position
-			player.y, -- y position
-			nil, -- angle, in radians
-			0.5,0.5, -- scaling factor (original image scale times by number given) (x, y)
-			assets.gfx.background:getWidth()/2, -- 
-			assets.gfx.background:getHeight()/2) 
-
-		gameMap:drawLayer(gameMap.layers["ground"])
-		gameMap:drawLayer(gameMap.layers["wall"])
-
-		player.anim:draw(player.spritesheet,
-			player.x,
-			player.y,
-			nil,
-			player.scaleX,
-			player.scaleY,
-			16, 16)
-
-		gameMap:drawLayer(gameMap.layers["bottom_wall"])
-
-	cam:detach()
-
-	ui_draw()
 
 end
