@@ -9,14 +9,15 @@ ironhart
 │   │   └── iosevka.ttf
 │   ├── gfx
 │   │   ├── background.png
-│   │   ├── pallete.png
-│   │   ├── player.png
+│   │   ├── logo.png
+│   │   ├── palette.png
 │   │   └── spritesheet.png
 │   ├── music
 │   └── sfx
 ├── conf.lua
 ├── lib
 │   ├── anim8.lua
+│   ├── bump.lua
 │   ├── gooi
 │   │   ├── bar.lua
 │   │   ├── button.lua
@@ -64,10 +65,11 @@ ironhart
 │   └── tileset.png
 ├── README.md
 └── src
-    ├── assets.lua
+    ├── game.lua
     ├── player.lua
-    └── ui.lua
+    ├── ui_game.lua
+    └── ui_menu.lua
 
-15 directories, 50 files
+15 directories, 52 files
 
  ```
