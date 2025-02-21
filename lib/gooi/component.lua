@@ -8,7 +8,7 @@ component.colors = {
   green = {90/255, 197/255, 79/255, 1.0},
   cyan = {0, 203/255, 249/255, 1.0},
   orange = {0.94, 0.68, 0.31, 1.0},
-  red = {255/255, 0, 64/255, 1.0},
+  red = {87/255, 28/255, 39/255, 1.0},
   black = {19/255, 19/255, 19/255, 1.0},
   white = {1.0, 1.0, 1.0, 1.0},
   clearGray = {180/255, 180/255, 180/255, 1.0},
@@ -16,7 +16,7 @@ component.colors = {
   darkGrayAlpha = {39/255, 39/255, 39/255, 0.59},
 }
 component.style = {
-  bgColor = component.colors.darkGray,
+  bgColor = component.colors.red,
   fgColor = component.colors.white, -- Foreground color
   tooltipFont = love.graphics.newFont(love.window.toPixels(11)), -- tooltips are smaller than the main font
   radius = 2, -- raw pixels
