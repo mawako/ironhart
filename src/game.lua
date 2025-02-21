@@ -9,8 +9,6 @@ function game:enter()
 
 	world = windfield.newWorld(0, 0)
 
-	load_assets()
-
 	player_settings()
 
 	walls = {}
@@ -43,8 +41,9 @@ function game:keypressed(key)
       	gooi.confirm({
             text = "Return to menu?",
             ok = function()
-                print("User pressed exit button")
                 hump_gamestate.switch(menu)
+                stamina_bar.x = -1000
+                stamina_bar.y = -1000
             end
         	})
    end
