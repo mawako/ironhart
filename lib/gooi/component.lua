@@ -18,14 +18,14 @@ component.colors = {
 component.style = {
   bgColor = component.colors.darkGray,
   fgColor = component.colors.white, -- Foreground color
-  tooltipFont = love.graphics.newFont("assets/fonts/alagard.ttf", 11), -- tooltips are smaller than the main font
+  tooltipFont = love.graphics.newFont(love.window.toPixels(11)), -- tooltips are smaller than the main font
   radius = 2, -- raw pixels
   innerRadius = 2, -- raw pixels
   showBorder = true, -- border for components
   borderColor = component.colors.blue,
   borderWidth = love.window.toPixels(2), -- in pixels
   borderStyle = "smooth", -- or "smooth"
-  font = love.graphics.newFont("assets/fonts/alagard.ttf", 20),
+  font = love.graphics.newFont(love.window.toPixels(13)),
 }
 
 local currId = -1
