@@ -68,6 +68,8 @@ function love.load()
 	hump_gamestate = require("lib/hump/gamestate")
 	anim8 = require("lib/anim8")
 	sti = require("lib/sti")
+	bump = require("lib/bump")
+
 
 	hump_gamestate.registerEvents()
 	hump_gamestate.switch(menu)
