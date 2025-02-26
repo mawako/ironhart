@@ -1,8 +1,29 @@
-# ironhart
- A game written in LOVE2D
+# IRONHART
+ A game written in LOVE2D by Marcel Walentin-Konieczny
 
  ```
 ironhart
+├── api
+│   ├── love.audio.lua
+│   ├── love.data.lua
+│   ├── love.event.lua
+│   ├── love.filesystem.lua
+│   ├── love.font.lua
+│   ├── love.graphics.lua
+│   ├── love.image.lua
+│   ├── love.joystick.lua
+│   ├── love.keyboard.lua
+│   ├── love.lua
+│   ├── love.math.lua
+│   ├── love.mouse.lua
+│   ├── love.physics.lua
+│   ├── love.sound.lua
+│   ├── love.system.lua
+│   ├── love.thread.lua
+│   ├── love.timer.lua
+│   ├── love.touch.lua
+│   ├── love.video.lua
+│   └── love.window.lua
 ├── assets
 │   ├── fonts
 │   │   ├── alagard.ttf
@@ -70,6 +91,6 @@ ironhart
     ├── ui_game.lua
     └── ui_menu.lua
 
-15 directories, 52 files
+16 directories, 72 files
 
  ```
