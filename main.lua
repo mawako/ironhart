@@ -39,8 +39,8 @@ function menu:draw()
 		384, -- y position
 		nil, -- angle, in radians
 		1,1, -- scaling factor (original image scale times by number given) (x, y)
-		assets.gfx["background"]:getWidth()/2,
-		assets.gfx["background"]:getHeight()/2)
+		assets.gfx["background"]:getWidth()/2, -- offset x position
+		assets.gfx["background"]:getHeight()/2) -- offset y position
 
 	menu_ui_draw()
 end
@@ -63,6 +63,7 @@ function love.load()
 	assets.font["iosevka"] = love.graphics.newFont("assets/fonts/iosevka.ttf", 20)
 	assets.font["alagard"] = love.graphics.newFont("assets/fonts/alagard.ttf", 20)
 
+	-- load libraries
 	windfield = require("lib/windfield")
 	hump_camera = require("lib/hump/camera")
 	hump_gamestate = require("lib/hump/gamestate")
@@ -70,7 +71,7 @@ function love.load()
 	sti = require("lib/sti")
 	bump = require("lib/bump")
 
-
+	-- register hump gamestate events and set default to 'menu'
 	hump_gamestate.registerEvents()
 	hump_gamestate.switch(menu)
 
