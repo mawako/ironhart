@@ -9,7 +9,7 @@ function game:enter()
 
 	world = windfield.newWorld(0, 0)
 
-	player_settings()
+	player_init()
 
 	walls = {}
 	if gameMap.layers["colliders"] then 

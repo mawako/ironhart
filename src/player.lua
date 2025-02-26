@@ -1,5 +1,5 @@
 
-function player_settings() 
+function player_init()
 	player = {}
 	player.x = 100
 	player.y = 150
