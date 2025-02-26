@@ -17,9 +17,9 @@ function menu:keypressed(key)
 
    if key == "escape" then
       	gooi.confirm({
-            text = "Exit game?",
+            text = "Are you sure you want to exit?",
             ok = function()
-                print("User pressed exit button")
+                print("User quit game using ESC")
                 love.event.quit()
             end
         	})
@@ -41,16 +41,17 @@ function menu:draw()
 		1,1, -- scaling factor (original image scale times by number given) (x, y)
 		assets.gfx["background"]:getWidth()/2,
 		assets.gfx["background"]:getHeight()/2)
-	
 
 	menu_ui_draw()
 end
 
 
 function love.load()
-	
+
+	-- set default filter for graphics
 	love.graphics.setDefaultFilter("nearest", "nearest")
 
+    -- load assets
 	assets = {}
 	assets.font = {}
 	assets.gfx = {}
@@ -70,14 +71,5 @@ function love.load()
 
 	hump_gamestate.registerEvents()
 	hump_gamestate.switch(menu)
-	
-
-end
-
-function love.update(dt) 
-
-end
-
-function love.draw()
 
 end
