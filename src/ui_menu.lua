@@ -29,10 +29,10 @@ function ui_menu:load()
         w = 150,
         h = 35,
     }):onRelease(function()
-        gooi.alert({
-            text = "WASD to Move, " .. 
-            "LShift to Sprint"
-        })
+        hump_gamestate.switch(help)
+        play.x, play.y = -1000, -1000
+        help.x, help.y = -1000, -1000
+        exit.x, exit.y = -1000, -1000
     end)
 
     exit = gooi.newButton({

@@ -1,5 +1,7 @@
 require("src/player")
 require("src/game")
+require("src/help")
+
 require("lib/gooi")
 require("src/ui_menu")
 
