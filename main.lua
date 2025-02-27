@@ -6,11 +6,11 @@ require("src/ui_menu")
 menu = {}
 
 function menu:enter() 
-	menu_ui_load()
+	ui_menu:load()
 end
 
-function menu:update(dt) 
-	menu_ui_update(dt)
+function menu:update(dt)
+	ui_menu:update(dt)
 end
 
 function menu:keypressed(key)
@@ -42,7 +42,7 @@ function menu:draw()
 		assets.gfx["background"]:getWidth()/2, -- offset x position
 		assets.gfx["background"]:getHeight()/2) -- offset y position
 
-	menu_ui_draw()
+	ui_menu:draw()
 end
 
 

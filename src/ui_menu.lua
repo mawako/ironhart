@@ -1,6 +1,8 @@
 require("lib/gooi")
 
-function menu_ui_load()
+ui_menu = {}
+
+function ui_menu:load()
     
     play = gooi.newButton({
         text = "PLAY",
@@ -50,11 +52,11 @@ function menu_ui_load()
     
 end
 
-function menu_ui_update(dt)
+function ui_menu:update(dt)
     gooi.update(dt)
 end
 
-function menu_ui_draw()
+function ui_menu:draw()
     gooi.draw()
 end
 
