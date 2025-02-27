@@ -11,5 +11,5 @@ function help:update(dt)
 end
 
 function help:draw()
-    love.graphics.print()
+
 end
