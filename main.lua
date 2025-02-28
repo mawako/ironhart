@@ -1,7 +1,7 @@
 require("src/player")
 require("src/game")
 require("src/help")
-
+require("src/assets")
 require("lib/gooi")
 require("src/ui_menu")
 
@@ -52,18 +52,6 @@ function love.load()
 
 	-- set default filter for graphics
 	love.graphics.setDefaultFilter("nearest", "nearest")
-
-    -- load assets
-	assets = {}
-	assets.font = {}
-	assets.gfx = {}
-
-	assets.gfx["background"] = love.graphics.newImage("assets/gfx/background.png")
-	assets.gfx["spritesheet"] = love.graphics.newImage("assets/gfx/spritesheet.png")
-	assets.gfx["logo"] = love.graphics.newImage("assets/gfx/logo.png")
-
-	assets.font["iosevka"] = love.graphics.newFont("assets/fonts/iosevka.ttf", 20)
-	assets.font["alagard"] = love.graphics.newFont("assets/fonts/alagard.ttf", 20)
 
 	-- load libraries
 	windfield = require("lib/windfield")

@@ -1,28 +1,58 @@
+require("src/assets")
+anim8 = require("lib/anim8")
 
-function player_init()
-	player = {}
-	player.x = 100
-	player.y = 150
-	player.scaleX = 1
-	player.scaleY = 1
-	player.speed = 75
-	player.speed_modfier = 1
-	player.stamina = 1
-	player.sprite = assets.gfx["player"]
-	player.spritesheet = assets.gfx["spritesheet"]
-	player.grid = anim8.newGrid(32, 32, player.spritesheet:getWidth(), player.spritesheet:getHeight())
-	player.collider = world:newBSGRectangleCollider(player.x, player.y, 12, 16, 10)
+player =
+{
+	x = 100,
+	y = 150,
+	scaleX = 1,
+	scaleY = 1,
+	speed = 75,
+	speed_modfier = 1,
+	stamina = 1,
+	sprite = assets.gfx["player"],
+	spritesheet = assets.gfx["spritesheet"],
+	grid = anim8.newGrid(32, 32, spritesheet:getWidth(), spritesheet:getHeight()),
+	collider = world:newBSGRectangleCollider(x, y, 12, 16, 10),
+	--collidersetFixedRotation(true),
+	animations =
+	{
+		["idle"] = anim8.newAnimation(grid("1-4", 1), 0.3),
+		["up"] = anim8.newAnimation(grid("1-8", 3), 0.1),
+		["down"] = anim8.newAnimation(grid("1-8", 5), 0.1),
+		["left_right"] = anim8.newAnimation(grid("1-8", 2), 0.1),
+		["attack"] = anim8.newAnimation(grid("1-6", 17), 0.1),
+	},
+}
+
+player.initialise = function()
 	player.collider:setFixedRotation(true)
-
-	player.animations = {}
-	player.animations["idle"] = anim8.newAnimation(player.grid("1-4", 1), 0.3)
-	player.animations["up"] = anim8.newAnimation(player.grid("1-8", 3), 0.1)
-	player.animations["down"] = anim8.newAnimation(player.grid("1-8", 5), 0.1)
-	player.animations["left_right"] = anim8.newAnimation(player.grid("1-8", 2), 0.1)
-	player.animations["attack"] = anim8.newAnimation(player.grid("1-6", 17), 0.1)
-
 	player.anim = player.animations.idle
 end
+
+--function init()
+--	player.x = 100
+--	player.y = 150
+--	player.scaleX = 1
+--	player.scaleY = 1
+--	player.speed = 75
+--	player.speed_modfier = 1
+--	player.stamina = 1
+--	player.sprite = assets.gfx["player"]
+--	player.spritesheet = assets.gfx["spritesheet"]
+--	player.grid = anim8.newGrid(32, 32, player.spritesheet:getWidth(), player.spritesheet:getHeight())
+--	player.collider = world:newBSGRectangleCollider(player.x, player.y, 12, 16, 10)
+--	player.collider:setFixedRotation(true)
+--
+--	player.animations = {}
+--	player.animations["idle"] = anim8.newAnimation(player.grid("1-4", 1), 0.3)
+--	player.animations["up"] = anim8.newAnimation(player.grid("1-8", 3), 0.1)
+--	player.animations["down"] = anim8.newAnimation(player.grid("1-8", 5), 0.1)
+--	player.animations["left_right"] = anim8.newAnimation(player.grid("1-8", 2), 0.1)
+--	player.animations["attack"] = anim8.newAnimation(player.grid("1-6", 17), 0.1)
+--
+--	player.anim = player.animations.idle
+--end
 
 function player_movement(dt)
 	local velocity_x = 0
