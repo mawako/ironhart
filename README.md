@@ -1,5 +1,5 @@
-# IRONHART
- A game written in LOVE2D by Marcel Walentin-Konieczny
+# IRONHART (Remake)
+ This branch of IRONHART is a devlopment branch where the entire code had been redone.
 
  ```
 ironhart
