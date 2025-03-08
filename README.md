@@ -1,4 +1,4 @@
-# IRONHART
+# IRONHART (Stable Branch)
  A game written in LOVE2D by Marcel Walentin-Konieczny
 
  ```
