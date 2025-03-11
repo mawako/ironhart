@@ -71,8 +71,8 @@ function game:draw()
 		player.x,
 		player.y,
 		nil,
-		player.scaleX,
-		player.scaleY,
+		player.scale_x,
+		player.scale_y,
 		16, 16)
 
 	gameMap:drawLayer(gameMap.layers["bottom_wall"])
