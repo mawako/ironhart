@@ -8,6 +8,9 @@ function game:enter()
 	cam = hump_camera(100, 100, 4, 0)
 
 	world = windfield.newWorld(0, 0)
+	world:addCollisionClass("Walls")
+	world:addCollisionClass("Player")
+	world:addCollisionClass("Powerup")
 
 	player.initialise()
 
@@ -24,7 +27,7 @@ function game:enter()
 end
 
 function game:update(dt)
-	player_movement(dt)
+	player.movement(dt)
 
 	world:update(dt)
 	player.x = player.collider:getX()
