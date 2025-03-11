@@ -6,8 +6,8 @@ player = {}
 player.initialise = function()
 	player.x = 100
 	player.y = 150
-	player.scaleX = 1
-	player.scaleY = 1
+	player.scale_x = 1
+	player.scale_y = 1
 	player.speed = 75
 	player.speed_modfier = 1
 	player.stamina = 1
@@ -22,7 +22,8 @@ player.initialise = function()
 	player.animations["idle"] = anim8.newAnimation(player.grid("1-4", 1), 0.3)
 	player.animations["up"] = anim8.newAnimation(player.grid("1-8", 3), 0.1)
 	player.animations["down"] = anim8.newAnimation(player.grid("1-8", 5), 0.1)
-	player.animations["left_right"] = anim8.newAnimation(player.grid("1-8", 2), 0.1)
+	player.animations["left"] = anim8.newAnimation(player.grid("1-8", 4), 0.1)
+	player.animations["right"] = anim8.newAnimation(player.grid("1-8", 2), 0.1)
 	player.animations["attack"] = anim8.newAnimation(player.grid("1-6", 17), 0.1)
 
 	player.anim = player.animations.idle
@@ -38,19 +39,21 @@ function player.movement(dt)
 	if love.keyboard.isDown("w") then 
 		velocity_y = (player.speed * player.speed_modfier) * -1
 		player.anim = player.animations["up"]
-	elseif love.keyboard.isDown("s") then 
+	end
+
+	if love.keyboard.isDown("s") then
 		velocity_y = player.speed * player.speed_modfier
 		player.anim = player.animations["down"]
 	end
 
-	if love.keyboard.isDown("a") then 
+	if love.keyboard.isDown("a") then
 		velocity_x = (player.speed * player.speed_modfier) * -1
-		player.anim = player.animations["left_right"]
-		player.scaleX = -1
-	elseif love.keyboard.isDown("d") then 
+		player.anim = player.animations["left"]
+	end
+
+	if love.keyboard.isDown("d") then
 		velocity_x = player.speed * player.speed_modfier
-		player.anim = player.animations["left_right"]
-		player.scaleX = 1
+		player.anim = player.animations["right"]
 	end
 
 
@@ -60,7 +63,7 @@ function player.movement(dt)
 	elseif love.keyboard.isDown("lshift") and velocity_y ~= 0 then
     player.speed_modfier = 1.75
 		player.stamina = player.stamina - 0.001
-  else 
+  	else
 		player.speed_modfier = 1
 		player.stamina = player.stamina + 0.001
 	end
