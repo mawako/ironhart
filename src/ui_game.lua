@@ -4,10 +4,10 @@ function game_ui_load()
     
     stamina_bar = gooi.newBar({
         value = player.stamina,
-        x = 0,
-        y = 758,
-        w = 1280,
-        h = 10,
+        x = 10,
+        y = 10,
+        w = 250,
+        h = 30,
     })
 
 end
