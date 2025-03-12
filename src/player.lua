@@ -3,7 +3,7 @@ anim8 = require("lib/anim8")
 
 player = {}
 
-player.initialise = function()
+function player.initialise()
 	player.x = 100
 	player.y = 150
 	player.scale_x = 1
@@ -27,10 +27,16 @@ player.initialise = function()
 	player.animations["attack"] = anim8.newAnimation(player.grid("1-6", 17), 0.1)
 
 	player.anim = player.animations.idle
-
 end
 
+function player.collision_check()
+	player.x = player.collider:getX()
+	player.y = player.collider:getY()
+end
+
+
 function player.movement(dt)
+
 	local velocity_x = 0
 	local velocity_y = 0
 
@@ -79,4 +85,5 @@ function player.movement(dt)
 
 	player.anim:update(dt)
 end
+
 

@@ -10,7 +10,7 @@ function game_ui_load()
         h = 20,
     })
 
-    stamina_counter = gooi.newLabel({
+    stamina_label = gooi.newLabel({
         text = "STAMINA",
         x = 10,
         y = 45,
@@ -34,7 +34,7 @@ function game_ui_update(dt)
     stamina_bar.value = player.stamina
     health_bar.value = player.health
 
-    stamina_counter.style.fgColor = {19/255, 19/255, 19/255, 1.0}
+    stamina_label.style.fgColor = {19/255, 19/255, 19/255, 1.0}
 
 end
 

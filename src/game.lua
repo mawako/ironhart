@@ -5,14 +5,18 @@ game = {}
 function game:enter()
 	gameMap = sti("maps/map1.lua")
 
+	--
 	cam = hump_camera(100, 100, 4, 0)
 
+	-- initialise the world colliders using the Windfield library
 	world = windfield.newWorld(0, 0)
+	-- add collision classes for specific uses
 	world:addCollisionClass("Walls")
 	world:addCollisionClass("Player")
 	world:addCollisionClass("Powerup")
 
 	player.initialise()
+	enemy.initalise()
 
 	walls = {}
 	if gameMap.layers["colliders"] then 
@@ -27,11 +31,13 @@ function game:enter()
 end
 
 function game:update(dt)
+
 	player.movement(dt)
+	enemy.movement(dt)
 
 	world:update(dt)
-	player.x = player.collider:getX()
-	player.y = player.collider:getY()
+	player.collision_check()
+	enemy.collision_check()
 
 	cam:lookAt(player.x, player.y)
 
@@ -46,7 +52,8 @@ function game:keypressed(key)
             ok = function()
                 hump_gamestate.switch(menu)
                 stamina_bar.x = -1000
-                stamina_bar.y = -1000
+				stamina_label.x = -1000
+				health_bar.x = -1000
             end
         	})
    end
@@ -75,7 +82,16 @@ function game:draw()
 		player.scale_y,
 		16, 16)
 
+	love.graphics.draw(enemy.sprite,
+	enemy.x, enemy.y,
+	nil,
+	enemy.scale_x, enemy.scale_y,
+	assets.gfx["enemy_sprite"]:getWidth()/2,
+	assets.gfx["enemy_sprite"]:getHeight()/2)
+
 	gameMap:drawLayer(gameMap.layers["bottom_wall"])
+
+	world:draw()
 
 	cam:detach()
 

@@ -1,4 +1,5 @@
 require("src/player")
+require("src/enemy")
 require("src/game")
 require("src/help")
 require("src/assets")

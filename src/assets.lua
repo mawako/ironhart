@@ -5,6 +5,7 @@ assets.gfx = {}
 assets.gfx["background"] = love.graphics.newImage("assets/gfx/game_background.png")
 assets.gfx["spritesheet"] = love.graphics.newImage("assets/gfx/spritesheet.png")
 assets.gfx["logo"] = love.graphics.newImage("assets/gfx/logo.png")
+assets.gfx["enemy_sprite"] = love.graphics.newImage("assets/gfx/enemy.png")
 
 assets.font = {}
 assets.font["iosevka"] = love.graphics.newFont("assets/fonts/iosevka.ttf", 20)
