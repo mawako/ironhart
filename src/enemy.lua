@@ -1,6 +1,6 @@
 enemy = {}
 
-function enemy.initalise()
+function enemy.init()
     enemy.x = 100
     enemy.y = 100
     enemy.scale_x = 1
@@ -11,6 +11,7 @@ function enemy.initalise()
     enemy.sprite:setFilter("nearest", "nearest")
     enemy.collider = world:newBSGRectangleCollider(enemy.x, enemy.y, 12, 16, 10)
     enemy.collider:setFixedRotation(true)
+    enemy.collider:setCollisionClass("Enemy")
 end
 
 function enemy.collision_check()
@@ -27,12 +28,20 @@ function enemy.movement(dt)
         velocity_x = enemy.speed
     elseif enemy.x > player.x then
         velocity_x = enemy.speed * -1
+    else
+        velocity_x = 0
     end
 
     if enemy.y < player.y then
         velocity_y = enemy.speed
     elseif enemy.y > player.y then
         velocity_y = enemy.speed * -1
+    else
+        velocity_y = 0
+    end
+
+    if enemy.collider:enter("Player") then
+        player.health = player.health - 0.25
     end
 
     enemy.collider:setLinearVelocity(velocity_x, velocity_y)

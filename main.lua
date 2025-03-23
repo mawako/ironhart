@@ -1,10 +1,11 @@
 require("src/player")
+require("src/arrow")
 require("src/enemy")
 require("src/game")
 require("src/help")
-require("src/assets")
 require("lib/gooi")
 require("src/ui_menu")
+require("src/assets")
 
 menu = {}
 

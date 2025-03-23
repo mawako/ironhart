@@ -5,7 +5,7 @@ game = {}
 function game:enter()
 	gameMap = sti("maps/map1.lua")
 
-	--
+	-- declare camera properties
 	cam = hump_camera(100, 100, 4, 0)
 
 	-- initialise the world colliders using the Windfield library
@@ -14,9 +14,11 @@ function game:enter()
 	world:addCollisionClass("Walls")
 	world:addCollisionClass("Player")
 	world:addCollisionClass("Powerup")
+	world:addCollisionClass("Enemy")
 
-	player.initialise()
-	enemy.initalise()
+	player.init()
+	enemy.init()
+	arrow.init()
 
 	walls = {}
 	if gameMap.layers["colliders"] then 
@@ -27,7 +29,7 @@ function game:enter()
 		end
 	end
 
-	game_ui_load()
+	game_ui.load()
 end
 
 function game:update(dt)
@@ -35,13 +37,15 @@ function game:update(dt)
 	player.movement(dt)
 	enemy.movement(dt)
 
+	arrow.update(dt)
+
 	world:update(dt)
 	player.collision_check()
 	enemy.collision_check()
 
 	cam:lookAt(player.x, player.y)
 
-	game_ui_update(dt)
+	game_ui.update(dt)
 end
 
 function game:keypressed(key)
@@ -83,19 +87,19 @@ function game:draw()
 		16, 16)
 
 	love.graphics.draw(enemy.sprite,
-	enemy.x, enemy.y,
-	nil,
-	enemy.scale_x, enemy.scale_y,
-	assets.gfx["enemy_sprite"]:getWidth()/2,
-	assets.gfx["enemy_sprite"]:getHeight()/2)
+		enemy.x, enemy.y,
+		nil,
+		enemy.scale_x, enemy.scale_y,
+		assets.gfx["enemy_sprite"]:getWidth()/2,
+		assets.gfx["enemy_sprite"]:getHeight()/2)
 
 	gameMap:drawLayer(gameMap.layers["bottom_wall"])
 
-	world:draw()
+	arrow:draw()
 
 	cam:detach()
 
-	game_ui_draw()
+	game_ui.draw()
 end
 
 return game
